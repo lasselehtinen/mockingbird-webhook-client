@@ -1,6 +1,6 @@
 {
     "name": "lasselehtinen/mockingbird-webhook-client",
-    "description": "This is my package mockingbird-webhook-client",
+    "description": "This package receives Mockingbird webhooks and convert them into strongly typed Laravel events.",
     "keywords": [
         "lasselehtinen",
         "laravel",
