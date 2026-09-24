@@ -1,0 +1,195 @@
+{
+  "specversion": "1.0",
+  "type": "product.changed.v1",
+  "source": "https://prodwsoy-webhook-app.azurewebsites.net/edition",
+  "id": "4e81512a-4f09-4c67-b9d1-b727e0a85d17",
+  "subject": "productid/e79f7e2e-e7b9-449c-85f1-cbc59e8a818f",
+  "time": "2026-09-23T10:12:38.0072104Z",
+  "datacontenttype": "application/json",
+  "data": {
+    "ProductId": "e79f7e2e-e7b9-449c-85f1-cbc59e8a818f",
+    "Ean": "9789524033480",
+    "Name": "Nämä sanat ovat vain sinulle",
+    "OriginalName": null,
+    "Subtitle": null,
+    "ArticleText": "Tämä kenttä ei ole käytössä.",
+    "PublishingDate": "2025-09-29T00:00:00",
+    "Season": {
+      "Period": "3",
+      "Year": "2025"
+    },
+    "IsPublic": true,
+    "EditionNumber": "1",
+    "GoverningCode": {
+      "Name": "Published",
+      "ErpId": "2"
+    },
+    "IsIllustrated": false,
+    "Prices": [
+      {
+        "PriceType": "ResellerPrice",
+        "Price": {
+          "Value": 20.9,
+          "Currency": "EUR"
+        }
+      },
+      {
+        "PriceType": "ResellerPriceIncludingVat",
+        "Price": {
+          "Value": 23.72,
+          "Currency": "EUR"
+        }
+      },
+      {
+        "PriceType": "PublisherRetailPrice",
+        "Price": {
+          "Value": 25.46,
+          "Currency": "EUR"
+        }
+      },
+      {
+        "PriceType": "PublisherRetailPriceIncludingVat",
+        "Price": {
+          "Value": 28.9,
+          "Currency": "EUR"
+        }
+      },
+      {
+        "PriceType": "BudgetedResellerPrice",
+        "Price": {
+          "Value": 24,
+          "Currency": "EUR"
+        }
+      }
+    ],
+    "Vat": 0.135,
+    "VatPercentage": 13.5,
+    "SalesYear": 0,
+    "SalesPeriod": null,
+    "FirstSellingDay": null,
+    "CostCenter": {
+      "Name": "Bazar",
+      "Code": "980",
+      "IsActive": true
+    },
+    "ProductGroup": {
+      "Name": "P1",
+      "ErpId": "P1"
+    },
+    "BindingCode": {
+      "Id": "BB",
+      "Name": "Hardback",
+      "ErpId": "HARD"
+    },
+    "DispositionCode": {
+      "Name": "d",
+      "ErpId": "d"
+    },
+    "InterestAge": null,
+    "Serie": {
+      "Id": "0d93d4af-d21c-42e3-52c6-08df17ea54a3",
+      "Name": "Töitä ja tähtipölyä",
+      "Position": 2
+    },
+    "CustomsNumber": "49019900",
+    "ReplacementEan": null,
+    "Measurements": {
+      "Width": 143,
+      "Height": 222,
+      "Depth": 33,
+      "Weight": 0.398
+    },
+    "Languages": [
+      {
+        "Name": "Finnish",
+        "Code": "fin"
+      }
+    ],
+    "OriginalLanguages": [],
+    "MainGroup": {
+      "Name": "Kotimainen kauno",
+      "ErpId": "1"
+    },
+    "Subgroup": {
+      "Name": "Viihde ja romantiikka",
+      "ErpId": "35"
+    },
+    "DiscountNumber": {
+      "Name": "0",
+      "ErpId": "0"
+    },
+    "PublishingHouse": {
+      "Id": "bazar",
+      "Name": "Bazar"
+    },
+    "Awards": [],
+    "Brand": {
+      "Name": "Bazar",
+      "OnixBrandIdBokinfo": null
+    },
+    "HasFscPaper": true,
+    "Pages": 315,
+    "WorkId": "295260",
+    "RequiresRoyaltyAgreement": true,
+    "DurationInSeconds": null,
+    "IsPrintOnDemand": false,
+    "ContractType": {
+      "Id": "na",
+      "Name": "Otetaan käyttöön myöhemmin"
+    },
+    "InternalCategory": null,
+    "CoverImageAssetId": "417637",
+    "Themas": [
+      {
+        "ThemaCodeValue": "FQ",
+        "ThemaCodeType": {
+          "Id": "1",
+          "Name": "Primary",
+          "OnixCode": "93",
+          "IsPrimary": true
+        },
+        "SortOrder": 1
+      },
+      {
+        "ThemaCodeValue": "FR",
+        "ThemaCodeType": {
+          "Id": "1",
+          "Name": "Primary",
+          "OnixCode": "93",
+          "IsPrimary": true
+        },
+        "SortOrder": 2
+      },
+      {
+        "ThemaCodeValue": "FV",
+        "ThemaCodeType": {
+          "Id": "1",
+          "Name": "Primary",
+          "OnixCode": "93",
+          "IsPrimary": true
+        },
+        "SortOrder": 3
+      }
+    ],
+    "StockBalance": 274,
+    "RegulatoryInfo": [],
+    "WebKeywords": [
+      "rahahuolet",
+      "kustannusala",
+      "projektit",
+      "kirjoittaminen",
+      "henkilöhistoria",
+      "rehabilitointi (maineenpalautus)",
+      "ikäero",
+      "yhteistyö",
+      "ystävyys",
+      "naiset"
+    ],
+    "ReviewDate": null,
+    "IsDigital": false,
+    "TechnicalProductionType": {
+      "Name": "Dust jacket with cover, glued binding"
+    },
+    "PriceGroupPocket": null
+  }
+}
