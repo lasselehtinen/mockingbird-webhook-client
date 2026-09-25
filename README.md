@@ -19,6 +19,8 @@ The package is built on top of `spatie/laravel-webhook-client` and provides:
 
 ```bash
 composer require lasselehtinen/mockingbird-webhook-client
+php artisan vendor:publish --tag="webhook-client-migrations"
+php artisan migrate
 ```
 ---
 
