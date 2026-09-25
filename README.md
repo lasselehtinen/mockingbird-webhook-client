@@ -22,6 +22,16 @@ composer require lasselehtinen/mockingbird-webhook-client
 php artisan vendor:publish --tag="webhook-client-migrations"
 php artisan migrate
 ```
+You should schedule the model:prune Artisan command in your application's routes/console.php to clean up older than 30 days old entries from the webhook_calls table.
+
+```php
+use Illuminate\Support\Facades\Schedule;
+use Spatie\WebhookClient\Models\WebhookCall;
+
+Schedule::command('model:prune', [
+    '--model' => [WebhookCall::class],
+])->daily();
+```
 ---
 
 # Workflow
