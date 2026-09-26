@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Event;
+use Lasselehtinen\MockingbirdWebhookClient\Data\MockingbirdWebhookData;
 use Lasselehtinen\MockingbirdWebhookClient\Events\EditionUpdated;
+use Lasselehtinen\MockingbirdWebhookClient\Exceptions\InvalidMockingbirdWebhook;
 use Spatie\WebhookClient\Models\WebhookCall;
 
 it('dispatches edition updated event from incoming webhook', function () {
@@ -31,3 +33,41 @@ it('dispatches edition updated event from incoming webhook', function () {
         }
     );
 });
+
+it('accepts a valid entity id uuid', function () {
+
+    $payload = [
+        'type' => 'product.changed.v1',
+        'specversion' => '1.0',
+        'subject' => '550e8400-e29b-41d4-a716-446655440000',
+        'id' => '550e8400-e29b-41d4-a716-446655440001',
+        'time' => now()->toIso8601String(),
+    ];
+
+    $data = MockingbirdWebhookData::fromPayload(
+        $payload
+    );
+
+    expect($data->entityId)
+        ->toBe(
+            '550e8400-e29b-41d4-a716-446655440000'
+        );
+});
+
+it('rejects invalid uuids', function (string $uuid) {
+
+    MockingbirdWebhookData::fromPayload([
+        'type' => 'product.changed.v1',
+        'specversion' => '1.0',
+        'subject' => $uuid,
+        'id' => '550e8400-e29b-41d4-a716-446655440001',
+        'time' => now()->toIso8601String(),
+    ]);
+
+})->throws(InvalidMockingbirdWebhook::class)
+    ->with([
+        '244940',
+        '9789510440001',
+        'not-a-uuid',
+        '',
+    ]);

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lasselehtinen\MockingbirdWebhookClient\Data;
 
 use Carbon\CarbonImmutable;
+use Illuminate\Support\Str;
 use Lasselehtinen\MockingbirdWebhookClient\Exceptions\InvalidMockingbirdWebhook;
 
 final readonly class MockingbirdWebhookData
@@ -36,6 +37,14 @@ final readonly class MockingbirdWebhookData
 
         if (! is_string($entityId) || $entityId === '') {
             throw InvalidMockingbirdWebhook::missingField('entityId');
+        }
+
+        if (! Str::isUuid($entityId)) {
+            throw InvalidMockingbirdWebhook::invalidFieldType(
+                'subject',
+                'UUID',
+                $entityId
+            );
         }
 
         if (! is_string($deliveryId) || $deliveryId === '') {
