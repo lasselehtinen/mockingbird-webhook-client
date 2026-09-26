@@ -140,10 +140,12 @@ it('print time plan event returns the edition id', function () {
     $data = new MockingbirdWebhookData(
         eventType: 'product.timeplan.changed.v1',
         specVersion: '1.0',
-        entityId: 'productid/a20e7e91-e898-425e-a2af-e1f98cb53d2a/printnumber/2',
+        entityId: 'a20e7e91-e898-425e-a2af-e1f98cb53d2a/printnumber/2',
         deliveryId: '5c246117-f3ce-485b-8d9e-19880add7482',
         occurredAt: now()->toImmutable(),
-        payload: [],
+        payload: [
+            'subject' => 'productid/a20e7e91-e898-425e-a2af-e1f98cb53d2a/printnumber/2',
+        ],
     );
 
     $event = new PrintTimePlanUpdated($data);

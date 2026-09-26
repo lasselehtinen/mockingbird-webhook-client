@@ -4,6 +4,7 @@ namespace Lasselehtinen\MockingbirdWebhookClient\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use InvalidArgumentException;
 use Lasselehtinen\MockingbirdWebhookClient\Contracts\MockingbirdWebhookEvent;
 use Lasselehtinen\MockingbirdWebhookClient\Data\MockingbirdWebhookData;
 
@@ -23,15 +24,41 @@ final class PrintTimePlanUpdated implements MockingbirdWebhookEvent
 
     public function editionId(): string
     {
-        // Remove productid and print number
-        $editionId = str_replace('productid/', '', $this->data->entityId);
+        preg_match(
+            '/([0-9a-f\-]{36})/',
+            $this->data->entityId,
+            $matches
+        );
 
-        return substr($editionId, 0, strpos($editionId, '/'));
+        return $matches[1];
     }
 
     public function printNumber(): int
     {
-        return intval(substr($this->data->entityId, strrpos($this->data->entityId, '/') + 1));
+        $subject = $this->data->payload['subject'] ?? null;
+
+        if (! is_string($subject)) {
+            throw new InvalidArgumentException(
+                'Webhook subject is missing.'
+            );
+        }
+
+        preg_match(
+            '#/printnumber/(\d+)$#',
+            $subject,
+            $matches
+        );
+
+        if (! isset($matches[1])) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Unable to determine print number from subject "%s".',
+                    $subject
+                )
+            );
+        }
+
+        return (int) $matches[1];
     }
 
     public function gtin(): ?int

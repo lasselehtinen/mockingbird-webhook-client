@@ -23,6 +23,6 @@ final class ContactUpdated implements MockingbirdWebhookEvent
 
     public function contactId(): string
     {
-        return str_replace('contactId/', '', $this->data->entityId);
+        return basename($this->data->entityId);
     }
 }

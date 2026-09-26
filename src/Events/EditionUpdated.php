@@ -23,8 +23,7 @@ final class EditionUpdated implements MockingbirdWebhookEvent
 
     public function editionId(): string
     {
-        // Return everything after product/ or productId/
-        return substr($this->data->entityId, ($pos = strpos($this->data->entityId, '/')) === false ? 0 : $pos + 1);
+        return basename($this->data->entityId);
     }
 
     public function gtin(): ?int

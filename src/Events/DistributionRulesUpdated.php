@@ -23,7 +23,7 @@ final class DistributionRulesUpdated implements MockingbirdWebhookEvent
 
     public function editionId(): string
     {
-        return str_replace('productid/', '', $this->data->entityId);
+        return basename($this->data->entityId);
     }
 
     public function gtin(): ?int

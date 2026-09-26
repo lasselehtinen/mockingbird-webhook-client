@@ -23,6 +23,6 @@ final class AssetUpdated implements MockingbirdWebhookEvent
 
     public function assetId(): string
     {
-        return str_replace('asset/', '', $this->data->entityId);
+        return basename($this->data->entityId);
     }
 }

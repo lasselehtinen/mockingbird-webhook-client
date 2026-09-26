@@ -23,7 +23,7 @@ final readonly class MockingbirdWebhookData
     {
         $eventType = $payload['type'] ?? null;
         $specVersion = $payload['specversion'] ?? null;
-        $entityId = $payload['subject'] ?? null;
+        $subject = $payload['subject'] ?? null;
         $deliveryId = $payload['id'] ?? null;
         $occurredAt = $payload['time'] ?? null;
 
@@ -35,9 +35,11 @@ final readonly class MockingbirdWebhookData
             throw InvalidMockingbirdWebhook::missingField('specVersion');
         }
 
-        if (! is_string($entityId) || $entityId === '') {
-            throw InvalidMockingbirdWebhook::missingField('entityId');
+        if (! is_string($subject) || $subject === '') {
+            throw InvalidMockingbirdWebhook::missingField('subject');
         }
+
+        $entityId = self::extractEntityId($subject);
 
         if (! Str::isUuid($entityId)) {
             throw InvalidMockingbirdWebhook::invalidFieldType(
@@ -72,6 +74,26 @@ final readonly class MockingbirdWebhookData
             deliveryId: $deliveryId,
             occurredAt: $occurredAt,
             payload: $payload,
+        );
+    }
+
+    private static function extractEntityId(string $subject): string
+    {
+        $segments = explode(
+            '/',
+            trim($subject, '/')
+        );
+
+        foreach ($segments as $segment) {
+            if (Str::isUuid($segment)) {
+                return $segment;
+            }
+        }
+
+        throw InvalidMockingbirdWebhook::invalidFieldType(
+            'subject',
+            'path containing a UUID',
+            $subject
         );
     }
 }
